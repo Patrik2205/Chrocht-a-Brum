@@ -140,6 +140,7 @@ public:
 
     double getHealthMultiplier() const { return healthMultiplier; }
 
+    string Type() const override { return "Vitality potion"; }
 private:
     double healthMultiplier;
 };
@@ -236,6 +237,13 @@ public:
                 Armor* armor = dynamic_cast<Armor*>(item);
                 if (armor) {
                     InventoryArmor.push_back(*armor);
+                    currentCarryWeight += item->getWeight() * quantity;
+                }
+            }
+            else if (item->Type() == "Vitality potion") {
+                VitalityPotion* potion = dynamic_cast<VitalityPotion*>(item);
+                if (potion) {
+                    InventoryVitalityPotion.push_back(*potion);
                     currentCarryWeight += item->getWeight() * quantity;
                 }
             }
@@ -694,9 +702,13 @@ void createCharacter(string name) {
     characters.emplace(name, Character(name));
 }
 */
-/*
+
 int main() {
     map<string, Character> characters;
+
+    CopperCoin copperCoin(1);
+
+    string typ = copperCoin.Type();
 
     characters.emplace("Chrocht", Character("Chrocht"));
     characters.emplace("Brum", Character("Brum"));
@@ -843,4 +855,3 @@ int main() {
         }
     }
 }
-*/

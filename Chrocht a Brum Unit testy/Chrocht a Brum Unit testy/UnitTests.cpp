@@ -18,6 +18,8 @@ BOOST_AUTO_TEST_CASE(StackableItemQuantity)
 
     stackableItem.increaseQuantity(2);
     BOOST_CHECK(stackableItem.getQuantity() == 5);
+
+    BOOST_CHECK(stackableItem.Type() == "StackableItem");
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -54,6 +56,39 @@ BOOST_AUTO_TEST_CASE(ArmorProtection)
 {
     Armor armor("TestArmor", 7);
     BOOST_CHECK(armor.getProtection() >= 1 && armor.getProtection() <= 4);
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_AUTO_TEST_SUITE(CoinsTests)
+
+BOOST_AUTO_TEST_CASE(CopperCoinTest)
+{
+    CopperCoin copperCoin(1);
+    BOOST_CHECK_EQUAL(copperCoin.Type(), "CopperCoin");
+}
+
+BOOST_AUTO_TEST_CASE(SilverCoinTest)
+{
+    SilverCoin silverCoin(1);
+    BOOST_CHECK_EQUAL(silverCoin.Type(), "SilverCoin");
+}
+
+BOOST_AUTO_TEST_CASE(GoldCoinTest)
+{
+    GoldCoin goldCoin(1);
+    BOOST_CHECK_EQUAL(goldCoin.Type(), "GoldCoin");
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_AUTO_TEST_SUITE(VitalityPotionsTest)
+
+BOOST_AUTO_TEST_CASE(VitalityPotionTest)
+{
+    VitalityPotion vitalityPotion("Potion", 140);
+    BOOST_CHECK(vitalityPotion.getHealthMultiplier() > 0);
+    BOOST_CHECK_EQUAL(vitalityPotion.Type(), "Vitality Potion");
 }
 
 BOOST_AUTO_TEST_SUITE_END()
